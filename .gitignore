@@ -1,3 +1,6 @@
 conf/
 rlib/arp-prev.out
 rlib/arp.out
+tmp/
+docs/
+.yardoc/
