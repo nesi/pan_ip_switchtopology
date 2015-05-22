@@ -4,9 +4,20 @@ require_relative 'snmp_override.rb' #Override the oids not increasing warning, w
 require_relative 'port.rb' 
 require 'pp' #for diagnostic messages
 
+#Holds a record for a Switch. 
 class Switch
   attr_accessor :name, :ports, :ip, :mac, :category, :switch_make, :switch_model
 
+  #Create an instance of Switch
+  # @return [Switch]
+  # @param name [String] Switch name
+  # @param ip [String, Array<String>] IP address of the switch itself. If more than on IP address, then this is an Array.
+  # @param mac [String, Array<String>] MAC address of the switch itself. If more than one, then this is an Array.
+  # @param switch_make [String] Manufacturers make
+  # @param switch_model [String] Manufacturers model
+  # @param category [String] Designates position in the network, which helps in making pretty pictures ["external" | "private_core", | "private_leaf" | ...]
+  # @param community [String] This switches SNMP read community string
+  # @param do_snmpwalk [Boolean] True, if we want to query the switch. False, if we want to skip this switch.
   def initialize(name, ip, mac, switch_make, switch_model, category, community, do_snmpwalk=false)
     @name, @ip, @switch_make, @switch_model, @category = name, ip,  switch_make, switch_model, category
     @community = community
@@ -21,6 +32,11 @@ class Switch
     snmpwalk if do_snmpwalk
   end  
   
+  #Is  a remote switch on this port, or just a host or hosts.
+  #Check is made using the results of querying the bridge MIB.
+  # @return [Boolean]
+  # @param pport [Port] Port record we want to test.
+  # @param switches [Hash] Hash by switch name, of all Switch records.
   def remote_switch?(pport, switches)
     switches.each do |sk,sv| #Look on all the switches we have to see if the switch Mac and port Mac match
       if sv.mac.class == Array
@@ -38,6 +54,8 @@ class Switch
     return false
   end
   
+  #Process all switches, and tag switch ports, that are connected to another of our switches.
+  # @param switches [Hash] Hash by switch name, of all Switch records.
   def set_is_our_switch(switches)
     @ports.each do |pkey, pport|#for each port on this switch
       if(pport.remote_mac != nil && pport.remote_mac != '') #if we have a remote port recorded.
@@ -48,10 +66,12 @@ class Switch
     end
   end
   
+  #To_s for this class for diagnositic purposes.
   def to_s
     "name=>#{@name}, ip=>#{@ip} mac=>#{@mac} ports=>#{@ports}"
   end
 
+  #Snmpwalk is run to retrieve multiple OIDs from ths switch, and set switch and port attributes.
   def snmpwalk
     process_switch(["1.0.8802.1.1.2.1.3.7.1.3"]) do |k,v| #Port numbers
       v = k[-1] if v == "" #Pronto8 switch sets v to ''
@@ -93,7 +113,7 @@ class Switch
     
     #SNMPv2-SMI::mib-2.17.1.4.1.2.port => interface number
     process_switch(["SNMPv2-SMI::mib-2.17.1.4.1.2"]) do |k,v| 
-      if @switch_make != :juniper
+      if @switch_make != "juniper"
         @physical_port_map[v] = k[-1] #Physical port number is derived from using virtual port number as a hash index
       end
     end
@@ -123,6 +143,8 @@ class Switch
     end
   end
   
+  #Process switch is called by snmpwalk to run a single SNMP query to retrieve the OID or OIDS passed in.
+  # @param ifTable_columns [String, Array<String>] The OIDS we want to retrieve from this switch.
   def process_switch(ifTable_columns)
     begin
       SNMP::Manager.open(:Host => @ip, :Community => "#{@community}", :Version => :SNMPv2c) do |manager|
