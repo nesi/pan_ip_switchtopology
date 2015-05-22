@@ -4,3 +4,8 @@ rlib/arp.out
 tmp/
 docs/
 .yardoc/
+.DS_Store
+generators/.DS_Store
+rlib/.DS_Store
+
+generators/
