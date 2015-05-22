@@ -1,8 +1,16 @@
 #Overrides the ruby snmp modules Manager.walk, to allow non-increasing OIDs
 #We see non-increasing OIDS from switches, where the tack on a MAC or IP address to the base OID.
-
+#
 module SNMP
+  #Manager class from snmplib
   class Manager
+    #Overrides walk in the standard SNMP snmp.rb library.
+    #Walks a list of ObjectId or VarBind objects using get_next until the response to the first OID in the list reaches the end of its MIB subtree.
+    # @param object_list [Array] List of oids we are looking up
+    # @param index_column The index_column identifies the column that will provide the index for each row. 
+    #        This information is used to deal with “holes” in a table (when a row is missing a varbind for one column). 
+    #         A missing varbind is replaced with a varbind with the value NoSuchInstance.
+    #         This could be used to instead of this override function, which is a more brute force approach.
     def walk(object_list, index_column=0)
       raise ArgumentError, "expected a block to be given" unless block_given?
       vb_list = @mib.varbind_list(object_list, :NullValue)
