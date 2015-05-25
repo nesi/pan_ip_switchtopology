@@ -7,5 +7,3 @@ docs/
 .DS_Store
 generators/.DS_Store
 rlib/.DS_Store
-
-generators/
