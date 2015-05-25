@@ -18,9 +18,9 @@ class Port
   # @return [String]
   def to_s
     if @bridge_port == true
-      "[#{@port_name}, #{@remote_switch_name}, #{@remote_port_name}, #{@remote_port_number}]"
+      "Bridge: [#{@port_name}, #{@remote_switch_name}, #{@remote_port_name}, #{@remote_port_number}]"
     else
-      "[#{@port_name}, [ #{@port_arp.join(',')} ] ]"
+      "Std Port: [#{@port_name}, [ #{@port_arp.join(',')} ] ]"
     end
   end
 end
