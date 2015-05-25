@@ -28,7 +28,7 @@ begin
   end
 
   #Finds ports that refer a switch and tags them as bridge ports.
-  @switches.each { |k, s| s.set_is_our_switch(@switches )} 
+  @switches.each { |k, s| s.set_is_our_switch( @switches )} 
 
   #These aren't getting picked up automatically in the switch's snmp bridge tables entries, so we have to manually configure these entries.
   @switches['bnt-a2-001-m'].ports['23'].remote_switch_name = 'ITS'; @switches['bnt-a2-001-m'].ports['23'].bridge_port = true;
@@ -37,10 +37,10 @@ begin
   @switches['bnt-a2-002-m'].ports['24'].remote_switch_name = 'ITS'; @switches['bnt-a2-002-m'].ports['24'].bridge_port = true;
   @switches['bnt-a2-002-m'].ports['21'].remote_switch_name = 'ITS_TMK_BR'; @switches['bnt-a2-002-m'].ports['21'].bridge_port = true;
 
-  self_test(@switches)
+  #self_test(@switches)
   
   #Generates a neato diagram for the switches we found.
-  Neato.gen_neato(@switches, @config.html_directory, @config.html_network_directory, @config.neato_base_filename, @config.neato_keep_tmp_files) 
+  Neato.gen_neato(@switches, @config.html_directory, @config.html_network_directory, @config.neato_base_filename, @config.neato_remove_tmp_files) 
   #Gen_switch_graph.gen_dot(@switches, @config.dot_filename)
   
   Gen_switch_graph.gen_shtml(@switches, @config.html_directory, @config.html_network_directory) #Generate the shtml files that link the neato .png and map files together (if they don't exist).
