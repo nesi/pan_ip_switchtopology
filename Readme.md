@@ -15,6 +15,10 @@ shtml files are then added to combine the references to the png and map files
 This must be run when the host file changes, or a host's MAC address changes (eg after a HW fault).
 It creates *conf/arp.out* , which holds a map of MAC address to host details.
 
+##Work to do
+
+Need to record the expected state, and compare against it, so I can highlight changes and faults.
+
 ##Example *conf/config.json*, 
 ```
 {
@@ -23,7 +27,7 @@ It creates *conf/arp.out* , which holds a map of MAC address to host details.
 "html_directory": "/var/www/html",        //Base directory of the web server
 "html_network_directory": "pan/network",  //Directory in web directory, that we want to store html & pics
 "neato_base_filename": "pan_private_net", //Base name for files created by neato (they will have .html .dot etc added)
-"neato_keep_tmp_files": false             //Do we clean up after ourselves (Set to true for debugging)
+"neato_remove_tmp_files": false             //Do we clean up after ourselves (Set to false for debugging)
 }
 ```
 
@@ -40,7 +44,7 @@ It creates *conf/arp.out* , which holds a map of MAC address to host details.
 
 	  //Two private network"s core 10G switches
 	  [ "bnt-c2-004-m", "10.0.1.247", "6C:AE:8B:E4:C5:00", "bnt", "G8124", "private_core", "secret", true ], //C2-U41 Core
-	  [ "bnt-c2-003-m", "10.0.1.246", ["6C:AE:8B:E4:CB:00","6C:AE:8B:E4:CB:FE"], "bnt", "G8124", "secret", "private_core", true ], //C2-U42 Core
+	  [ "bnt-c2-003-m", "10.0.1.246", ["6C:AE:8B:E4:CB:00","6C:AE:8B:E4:CB:FE"], "bnt", "G8124", "private_core", "secret", true ], //C2-U42 Core
 
 	  //In O15 test rack
 	  [ "Pica8 Switch", "10.0.1.147", ["E8:9A:8F:FB:C4:73","E8:9A:8F:FB:C4:74"], "pica8", "Pronto 3290", "private_leaf", true  ],
