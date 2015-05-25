@@ -1,0 +1,6 @@
+{
+"base_directory": "/tmp/iblinkinfo",                       //Test of a String
+"hello": ["This", "is", "an", "array"],                    //Test of an Array
+"world": { "1": "This", "2": "is", "3": "a", "4": "hash"}, //Test of a Hash
+"boolean": false         								   //Test of boolean
+}
