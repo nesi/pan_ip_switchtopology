@@ -127,7 +127,7 @@ class Arp
   # @param mac_address [String]  MAC address of the target.
   # @return  [String]  MAC address of the target with Uppercase, two digit Hexadecimal numbers, separated with ':'s.
   def expand(mac_address) #want leading 0's, which sometimes we don't always get. Want uppercase, some compare is simpler.
-    return nil if s == nil
+    return nil if mac_address == nil
     as = mac_address.split(':')
     as.collect! { |x| "%02X" % (x.to_i(16)) }
     as.join(':')
