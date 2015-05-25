@@ -68,7 +68,7 @@ class Switch
   
   #To_s for this class for diagnositic purposes.
   def to_s
-    "name=>#{@name}, ip=>#{@ip} mac=>#{@mac} ports=>#{@ports}"
+    "name=>#{@name}, ip=>#{@ip} mac=>#{@mac} @switch_make=>#{@switch_make} @switch_model=>#{@switch_model} category=>#{@category} community=>#{@communtiy}\nports=>#{@ports}"
   end
 
   #Snmpwalk is run to retrieve multiple OIDs from ths switch, and set switch and port attributes.
