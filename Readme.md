@@ -15,6 +15,10 @@ shtml files are then added to combine the references to the png and map files
 This must be run when the host file changes, or a host's MAC address changes (eg after a HW fault).
 It creates *conf/arp.out* , which holds a map of MAC address to host details.
 
+##Class Documentation
+
+http://nesi.github.io/pan_ip_switchtopology/
+
 ##Work to do
 
 Need to record the expected state, and compare against it, so I can highlight changes and faults.
