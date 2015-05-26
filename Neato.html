@@ -1,0 +1,603 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Neato
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!Neato.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (N)</a> &raquo;
+    
+    
+    <span class="title">Neato</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Neato
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Neato</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">generators/gen_neato_topology.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate a Graphviz neato file, showing the switches and the
+interconnections between them. We put the core switches at the center, and
+arrange the other switches in a 180 degree arc Lastly, we run the resulting
+file through neato to get a png.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gen_neato-class_method" title="gen_neato (class method)">+ (Object) <strong>gen_neato</strong>(switches, html_base_directory = &quot;/tmp/&quot;, web_directory = &#39;.&#39;, the_file = &#39;neato&#39;, remove_the_dot_file = true) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Creates neato (Graphviz) diagram as a png.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#switch_status-class_method" title="switch_status (class method)">+ (String) <strong>switch_status</strong>(switch) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Query the switch status, returning a status colour for the diagram.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="gen_neato-class_method">
+  
+    + (<tt>Object</tt>) <strong>gen_neato</strong>(switches, html_base_directory = &quot;/tmp/&quot;, web_directory = &#39;.&#39;, the_file = &#39;neato&#39;, remove_the_dot_file = true) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Creates neato (Graphviz) diagram as a png.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>switches</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Hash indexed by name of the switch, pointing to Switch records for the
+switches we defined in conf/switches.json.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>html_base_directory</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&quot;/tmp/&quot;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The system web server&#39;s root directory</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>web_directory</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;.&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The directory, relative to the web server dir, we will write our output to
+(.dot, .png, .html)</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>the_file</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;neato&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The basename of the files we write to (We will add a .dot, .png, .html, …)</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>remove_the_dot_file</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>true</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Set to false if you are debugging, and the temporary .dot file will not be
+removed</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'generators/gen_neato_topology.rb', line 12</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_gen_neato'>gen_neato</span><span class='lparen'>(</span><span class='id identifier rubyid_switches'>switches</span><span class='comma'>,</span> <span class='id identifier rubyid_html_base_directory'>html_base_directory</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/tmp/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_web_directory'>web_directory</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_the_file'>the_file</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>neato</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_remove_the_dot_file'>remove_the_dot_file</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_html_base_directory'>html_base_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_file'>the_file</span><span class='embexpr_end'>}</span><span class='tstring_content'>.dot</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>w</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_fd'>fd</span><span class='op'>|</span>
+    <span class='comment'>#300dpi 8x10 with 0.5&quot; margins
+</span>    <span class='id identifier rubyid_x'>x</span> <span class='op'>=</span> <span class='int'>10</span> <span class='comment'>#These units seem to be arbitrary. 
+</span>    <span class='id identifier rubyid_y'>y</span> <span class='op'>=</span> <span class='int'>10</span>
+    <span class='id identifier rubyid_centre'>centre</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_x'>x</span><span class='op'>/</span><span class='int'>2</span><span class='comma'>,</span><span class='id identifier rubyid_y'>y</span><span class='op'>/</span><span class='int'>2</span><span class='rbracket'>]</span> <span class='comment'>#Center of the arc . 
+</span>
+    <span class='comment'>#Switch elipse dimensions
+</span>    <span class='id identifier rubyid_height'>height</span> <span class='op'>=</span> <span class='float'>0.5</span> 
+    <span class='id identifier rubyid_width'>width</span> <span class='op'>=</span> <span class='id identifier rubyid_height'>height</span> <span class='op'>*</span> <span class='int'>16</span> <span class='op'>/</span> <span class='int'>9</span>
+
+    <span class='comment'>#spacing 0.5
+</span>    <span class='id identifier rubyid_spacing'>spacing</span> <span class='op'>=</span> <span class='float'>0.5</span>
+
+    <span class='comment'>#Position the Private network Core Switches
+</span>    <span class='id identifier rubyid_bnt_c2_003_m'>bnt_c2_003_m</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_centre'>centre</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='op'>-</span><span class='id identifier rubyid_spacing'>spacing</span><span class='op'>-</span><span class='id identifier rubyid_width'>width</span><span class='comma'>,</span> <span class='id identifier rubyid_centre'>centre</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_bnt_c2_004_m'>bnt_c2_004_m</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_centre'>centre</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='op'>+</span><span class='id identifier rubyid_spacing'>spacing</span><span class='op'>+</span><span class='id identifier rubyid_width'>width</span><span class='comma'>,</span> <span class='id identifier rubyid_centre'>centre</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+
+    <span class='comment'>#The external and private core switch node definitions. Set absolute position at bottom of page.
+</span>    <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='heredoc_beg'>&lt;&lt;-EOF</span>
+<span class='tstring_content'>      graph g {
+        overlap=scale;
+        layout=neato
+
+        &quot;bnt-a2-001-m&quot;       [height=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_height'>height</span><span class='embexpr_end'>}</span><span class='tstring_content'>,  pos=&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_bnt_c2_003_m'>bnt_c2_003_m</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_bnt_c2_003_m'>bnt_c2_003_m</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='op'>-</span><span class='id identifier rubyid_height'>height</span><span class='embexpr_end'>}</span><span class='tstring_content'>!&quot;,   width=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_width'>width</span><span class='embexpr_end'>}</span><span class='tstring_content'>, color=</span><span class='embexpr_beg'>#{</span><span class='lparen'>(</span><span class='id identifier rubyid_color'>color</span> <span class='op'>=</span> <span class='id identifier rubyid_switch_status'>switch_status</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bnt-a2-001-m</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_color'>color</span>  <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>black</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>, URL=\&quot;/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/bnt_a2_001_m_t.html\&quot;]; 
+        &quot;bnt-a2-002-m&quot;       [height=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_height'>height</span><span class='embexpr_end'>}</span><span class='tstring_content'>,  pos=&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_bnt_c2_004_m'>bnt_c2_004_m</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_bnt_c2_004_m'>bnt_c2_004_m</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='op'>-</span><span class='id identifier rubyid_height'>height</span><span class='embexpr_end'>}</span><span class='tstring_content'>!&quot;,   width=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_width'>width</span><span class='embexpr_end'>}</span><span class='tstring_content'>, color=</span><span class='embexpr_beg'>#{</span><span class='lparen'>(</span><span class='id identifier rubyid_color'>color</span> <span class='op'>=</span> <span class='id identifier rubyid_switch_status'>switch_status</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bnt-a2-002-m</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_color'>color</span>  <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>black</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>, URL=\&quot;/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/bnt_a2_002_m_t.html\&quot;];
+
+        &quot;bnt-c2-003-m&quot;       [height=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_height'>height</span><span class='embexpr_end'>}</span><span class='tstring_content'>,  pos=&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_bnt_c2_003_m'>bnt_c2_003_m</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_bnt_c2_003_m'>bnt_c2_003_m</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>!&quot;,   width=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_width'>width</span><span class='embexpr_end'>}</span><span class='tstring_content'>, color=</span><span class='embexpr_beg'>#{</span><span class='lparen'>(</span><span class='id identifier rubyid_color'>color</span> <span class='op'>=</span> <span class='id identifier rubyid_switch_status'>switch_status</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bnt-c2-003-m</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_color'>color</span>  <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>black</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>, URL=\&quot;/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/bnt_c2_003_m_t.html\&quot;];
+        &quot;bnt-c2-004-m&quot;       [height=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_height'>height</span><span class='embexpr_end'>}</span><span class='tstring_content'>,  pos=&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_bnt_c2_004_m'>bnt_c2_004_m</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_bnt_c2_004_m'>bnt_c2_004_m</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>!&quot;,   width=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_width'>width</span><span class='embexpr_end'>}</span><span class='tstring_content'>, color=</span><span class='embexpr_beg'>#{</span><span class='lparen'>(</span><span class='id identifier rubyid_color'>color</span> <span class='op'>=</span> <span class='id identifier rubyid_switch_status'>switch_status</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bnt-c2-004-m</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_color'>color</span>  <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>black</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>, URL=\&quot;/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/bnt_c2_004_m_t.html\&quot;];
+</span><span class='heredoc_end'>EOF
+</span>
+    <span class='id identifier rubyid_angle'>angle</span> <span class='op'>=</span> <span class='const'>Math</span><span class='op'>::</span><span class='const'>PI</span><span class='op'>/</span><span class='lparen'>(</span><span class='id identifier rubyid_switches'>switches</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>+</span> <span class='int'>1</span> <span class='op'>-</span> <span class='int'>3</span><span class='rparen'>)</span> <span class='comment'>#Don&#39;t include two external and two private_core switches in this count. Bnt-a2-001-m not included, as snmp failing.
+</span>    <span class='id identifier rubyid_r'>r</span> <span class='op'>=</span> <span class='int'>5</span> 
+    <span class='id identifier rubyid_t'>t</span> <span class='op'>=</span> <span class='int'>1</span>
+   
+    <span class='comment'>#Create a node record for each leaf switch, with an absolute position, equally spaced around a 180deg arc.
+</span>    <span class='id identifier rubyid_switches'>switches</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_category'>category</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>private_leaf</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id identifier rubyid_point'>point</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_r'>r</span> <span class='op'>*</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_cos'>cos</span><span class='lparen'>(</span><span class='id identifier rubyid_t'>t</span><span class='op'>*</span><span class='id identifier rubyid_angle'>angle</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_centre'>centre</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_r'>r</span> <span class='op'>*</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sin'>sin</span><span class='lparen'>(</span><span class='id identifier rubyid_t'>t</span><span class='op'>*</span><span class='id identifier rubyid_angle'>angle</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_centre'>centre</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>  <span class='rbracket'>]</span>
+        <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>          \&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\&quot; [height=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_height'>height</span><span class='embexpr_end'>}</span><span class='tstring_content'>, pos=\&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_point'>point</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_point'>point</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>!\&quot;, width=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_width'>width</span><span class='embexpr_end'>}</span><span class='tstring_content'>, color=</span><span class='embexpr_beg'>#{</span><span class='lparen'>(</span><span class='id identifier rubyid_color'>color</span> <span class='op'>=</span> <span class='id identifier rubyid_switch_status'>switch_status</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>#{s.name}</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_color'>color</span>  <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>black</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>, URL=\&quot;/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[- ]</span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>_</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>_t.html\&quot;]; </span><span class='tstring_end'>&quot;</span></span>
+        <span class='id identifier rubyid_t'>t</span> <span class='op'>=</span> <span class='id identifier rubyid_t'>t</span> <span class='op'>+</span> <span class='int'>1</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_processed_switch'>processed_switch</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+   <span class='comment'># processed_switch[&quot;bnt-a2-001-m&quot;] = true #SNMP failing, so manually added.
+</span>
+    <span class='id identifier rubyid_switches'>switches</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k1'>k1</span><span class='comma'>,</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_category'>category</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>external</span><span class='tstring_end'>&quot;</span></span> 
+        <span class='id identifier rubyid_processed_switch'>processed_switch</span><span class='lbracket'>[</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
+        <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_ports'>ports</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k2'>k2</span><span class='comma'>,</span><span class='id identifier rubyid_p'>p</span><span class='op'>|</span>
+          <span class='kw'>if</span> <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_switch_name'>remote_switch_name</span> <span class='op'>!=</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='comment'>#We have a remote switch 
+</span>            <span class='id identifier rubyid_switches'>switches</span><span class='lbracket'>[</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_switch_name'>remote_switch_name</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='comment'>#the remote switch is in our list of switches
+</span>            <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_port_name'>remote_port_name</span> <span class='op'>!~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>MGT[AB]</span><span class='regexp_end'>/</span></span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_port_name'>port_name</span> <span class='op'>!~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>MGT[AB]</span><span class='regexp_end'>/</span></span> <span class='op'>&amp;&amp;</span> <span class='comment'>#The port isn&#39;t connecting to a management port
+</span>            <span class='id identifier rubyid_processed_switch'>processed_switch</span><span class='lbracket'>[</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_switch_name'>remote_switch_name</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>nil</span>
+              <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\&quot; -- \&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_switch_name'>remote_switch_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\&quot; [style=\&quot;setlinewidth(2)\&quot; len=1.0 color=\&quot;green\&quot;  headlabel=\&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_port_name'>remote_port_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_port_name'>port_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\&quot; ];</span><span class='tstring_end'>&quot;</span></span>
+          <span class='kw'>end</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span>
+
+    <span class='id identifier rubyid_switches'>switches</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k1'>k1</span><span class='comma'>,</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_category'>category</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>private_core</span><span class='tstring_end'>&quot;</span></span> 
+        <span class='id identifier rubyid_processed_switch'>processed_switch</span><span class='lbracket'>[</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
+        <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_ports'>ports</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k2'>k2</span><span class='comma'>,</span><span class='id identifier rubyid_p'>p</span><span class='op'>|</span>
+          <span class='kw'>if</span> <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_switch_name'>remote_switch_name</span> <span class='op'>!=</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='comment'>#We have a remote switch 
+</span>            <span class='id identifier rubyid_switches'>switches</span><span class='lbracket'>[</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_switch_name'>remote_switch_name</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='comment'>#the remote switch is in our list of switches
+</span>            <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_port_name'>remote_port_name</span> <span class='op'>!~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>MGT[AB]</span><span class='regexp_end'>/</span></span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_port_name'>port_name</span> <span class='op'>!~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>MGT[AB]</span><span class='regexp_end'>/</span></span> <span class='op'>&amp;&amp;</span> <span class='comment'>#The port isn&#39;t connecting to a management port
+</span>            <span class='id identifier rubyid_processed_switch'>processed_switch</span><span class='lbracket'>[</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_switch_name'>remote_switch_name</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>nil</span>
+              <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\&quot; -- \&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_switch_name'>remote_switch_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\&quot; [style=\&quot;setlinewidth(2)\&quot; len=1.0 color=\&quot;green\&quot;  headlabel=\&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_port_name'>remote_port_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_port_name'>port_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\&quot; labeldistance=10 labelangle=0.0 ];</span><span class='tstring_end'>&quot;</span></span>
+          <span class='kw'>end</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span>
+    
+    <span class='id identifier rubyid_switches'>switches</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k1'>k1</span><span class='comma'>,</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_category'>category</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>private_leaf</span><span class='tstring_end'>&quot;</span></span>
+        <span class='id identifier rubyid_processed_switch'>processed_switch</span><span class='lbracket'>[</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
+        <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_ports'>ports</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k2'>k2</span><span class='comma'>,</span><span class='id identifier rubyid_p'>p</span><span class='op'>|</span>
+          <span class='kw'>if</span> <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_switch_name'>remote_switch_name</span> <span class='op'>!=</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='comment'>#We have a remote switch 
+</span>            <span class='id identifier rubyid_switches'>switches</span><span class='lbracket'>[</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_switch_name'>remote_switch_name</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='comment'>#the remote switch is in our list of switches
+</span>            <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_port_name'>remote_port_name</span> <span class='op'>!~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>MGT[AB]</span><span class='regexp_end'>/</span></span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_port_name'>port_name</span> <span class='op'>!~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>MGT[AB]</span><span class='regexp_end'>/</span></span> <span class='op'>&amp;&amp;</span> <span class='comment'>#The port isn&#39;t connecting to a management port
+</span>            <span class='id identifier rubyid_processed_switch'>processed_switch</span><span class='lbracket'>[</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_switch_name'>remote_switch_name</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>nil</span>              
+              <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_switch_name'>remote_switch_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\&quot; -- \&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\&quot; [style=\&quot;setlinewidth(2)\&quot; len=1.0 color=\&quot;green\&quot;  headlabel=\&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_remote_port_name'>remote_port_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_port_name'>port_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\&quot;  ];</span><span class='tstring_end'>&quot;</span></span>
+          <span class='kw'>end</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+    
+    <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>  }</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  
+  <span class='id identifier rubyid_system'>system</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/usr/bin/dot -Tpng -o </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_html_base_directory'>html_base_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_file'>the_file</span><span class='embexpr_end'>}</span><span class='tstring_content'>.png -Tcmapx -o </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_html_base_directory'>html_base_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_file'>the_file</span><span class='embexpr_end'>}</span><span class='tstring_content'>_map.html </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_html_base_directory'>html_base_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_file'>the_file</span><span class='embexpr_end'>}</span><span class='tstring_content'>.dot</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>    
+  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_unlink'>unlink</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_html_base_directory'>html_base_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_file'>the_file</span><span class='embexpr_end'>}</span><span class='tstring_content'>.dot</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_remove_the_dot_file'>remove_the_dot_file</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="switch_status-class_method">
+  
+    + (<tt>String</tt>) <strong>switch_status</strong>(switch) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Query the switch status, returning a status colour for the diagram. (Not
+completed, so always returns &#39;green&#39; for Ok)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>switch</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Switch.html" title="Switch (class)">Switch</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An individual switch, from which we determine the status.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A colour name, for use in generating the diagram.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+113
+114
+115</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'generators/gen_neato_topology.rb', line 113</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_switch_status'>switch_status</span><span class='lparen'>(</span><span class='id identifier rubyid_switch'>switch</span><span class='rparen'>)</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>green</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue May 26 12:17:34 2015 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.2).
+</div>
+
+  </body>
+</html>

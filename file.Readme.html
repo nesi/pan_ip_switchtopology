@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: Readme
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.Readme.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: Readme</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'>
+<h1 id="label-Switch+Topology">Switch Topology</h1>
+
+<p><code>switchtopology/run.rb</code></p>
+
+<p>Using the switches defined in <em>conf/switches.json</em>, snmp queries are
+run: * snmp bridge mib queries determine switches links verses host links.
+* Port status is queried * Manual links are added for the links to ITS,
+which we can&#39;t query the status of.</p>
+
+<p>A png, with HTML map file, is produced using neato, in the
+<em>html_directory/html_network_directory</em> directory shtml files are
+then added to combine the references to the png and map files</p>
+
+<p><code>switchtopology/gen_arp_out.sh</code></p>
+
+<p>This must be run when the host file changes, or a host&#39;s MAC address
+changes (eg after a HW fault). It creates <em>conf/arp.out</em> , which
+holds a map of MAC address to host details.</p>
+
+<h2 id="label-Work+to+do">Work to do</h2>
+
+<p>Need to record the expected state, and compare against it, so I can
+highlight changes and faults.</p>
+
+<h2 id="label-Example+conf-2Fconfig.json-2C">Example <em>conf/config.json</em>,</h2>
+
+<pre class="code ruby"><code class="ruby">{
+&quot;switch_config&quot;: &quot;conf/switches.json&quot;,    //Definition of switches of interest.
+&quot;base_directory&quot;: &quot;/var/pan/iblinkinfo&quot;,  //Directory we put temporary files
+&quot;html_directory&quot;: &quot;/var/www/html&quot;,        //Base directory of the web server
+&quot;html_network_directory&quot;: &quot;pan/network&quot;,  //Directory in web directory, that we want to store html &amp; pics
+&quot;neato_base_filename&quot;: &quot;pan_private_net&quot;, //Base name for files created by neato (they will have .html .dot etc added)
+&quot;neato_remove_tmp_files&quot;: false             //Do we clean up after ourselves (Set to false for debugging)
+}</code></pre>
+
+<h2 id="label-Example+conf-2Fswitches.json">Example <em>conf/switches.json</em></h2>
+
+<pre class="code ruby"><code class="ruby">{
+//Define the local switches we are interesed in.
+&quot;switches&quot;: [ 
+	  //hostname     ,  IP Address  , MAC Address       , Make, Model,  Position, Snmp-community, Use-SNMP
+
+	  //Two 10G switches connecting to ITS network (and to REANNZ)
+	  [ &quot;bnt-a2-001-m&quot;, &quot;10.0.1.229&quot;, &quot;08:17:F4:5E:62:00&quot;, &quot;bnt&quot;, &quot;G8124&quot;, &quot;external&quot;, &quot;secret&quot;, true ], 
+	  [ &quot;bnt-a2-002-m&quot;, &quot;10.0.1.230&quot;, &quot;08:17:F4:5E:50:00&quot;, &quot;bnt&quot;, &quot;G8124&quot;, &quot;external&quot;, &quot;secret&quot;, true ], 
+
+	  //Two private network&quot;s core 10G switches
+	  [ &quot;bnt-c2-004-m&quot;, &quot;10.0.1.247&quot;, &quot;6C:AE:8B:E4:C5:00&quot;, &quot;bnt&quot;, &quot;G8124&quot;, &quot;private_core&quot;, &quot;secret&quot;, true ], //C2-U41 Core
+	  [ &quot;bnt-c2-003-m&quot;, &quot;10.0.1.246&quot;, [&quot;6C:AE:8B:E4:CB:00&quot;,&quot;6C:AE:8B:E4:CB:FE&quot;], &quot;bnt&quot;, &quot;G8124&quot;, &quot;private_core&quot;, &quot;secret&quot;, true ], //C2-U42 Core
+
+	  //In O15 test rack
+	  [ &quot;Pica8 Switch&quot;, &quot;10.0.1.147&quot;, [&quot;E8:9A:8F:FB:C4:73&quot;,&quot;E8:9A:8F:FB:C4:74&quot;], &quot;pica8&quot;, &quot;Pronto 3290&quot;, &quot;private_leaf&quot;, true  ],
+	  //&quot;tdc-o18-u48-m&quot; in the hosts file and actually in o15 rack
+
+	  //In idataplex rack switches
+	  [ &quot;exmgmt-a1-b4-m&quot;, &quot;10.0.1.225&quot;, &quot;08:17:F4:C3:65:00&quot;, &quot;bnt&quot;, &quot;G8000&quot;, &quot;private_leaf&quot;, &quot;secret&quot;, true ],
+	  [ &quot;exmgmt-a1-b6-m&quot;, &quot;10.0.1.226&quot;, &quot;08:17:F4:C3:5F:00&quot;, &quot;bnt&quot;, &quot;G8000&quot;, &quot;private_leaf&quot;, &quot;secret&quot;, true ],
+	  [ &quot;exmgmt-a1-d4-m&quot;, &quot;10.0.1.227&quot;, &quot;08:17:F4:C3:6A:00&quot;, &quot;bnt&quot;, &quot;G8000&quot;, &quot;private_leaf&quot;, &quot;secret&quot;, true  ],
+	  [ &quot;exmgmt-a1-d6-m&quot;, &quot;10.0.1.228&quot;, &quot;08:17:F4:C3:AC:00&quot;, &quot;bnt&quot;, &quot;G8000&quot;, &quot;private_leaf&quot;, &quot;secret&quot;, true  ],
+	  [ &quot;exmgmt-b1-b6-m&quot;, &quot;10.0.1.237&quot;, &quot;6C:AE:8B:E0:20:00&quot;, &quot;bnt&quot;, &quot;G8000&quot;, &quot;private_leaf&quot;, &quot;secret&quot;, true  ],
+	  [ &quot;exmgmt-b1-d6-m&quot;, &quot;10.0.1.238&quot;, &quot;6C:AE:8B:E0:3F:00&quot;, &quot;bnt&quot;, &quot;G8000&quot;, &quot;private_leaf&quot;, &quot;secret&quot;, true  ],
+	  [ &quot;exmgmt-c3-b2-m&quot;, &quot;10.0.1.242&quot;, &quot;74:99:75:49:65:00&quot;, &quot;bnt&quot;, &quot;G8052&quot;, &quot;private_leaf&quot;, &quot;secret&quot;, true ],
+	  [ &quot;exmgmt-c3-d2-m&quot;, &quot;10.0.1.243&quot;, &quot;74:99:75:49:63:00&quot;, &quot;bnt&quot;, &quot;G8052&quot;, &quot;private_leaf&quot;, &quot;secret&quot;, true ],
+	  [ &quot;exmgmt-a4-b6-m&quot;, &quot;10.0.1.244&quot;, &quot;6C:AE:8B:E3:34:00&quot;, &quot;bnt&quot;, &quot;G8000&quot;, &quot;private_leaf&quot;, &quot;secret&quot;, true  ],
+	  [ &quot;exmgmt-a4-d6-m&quot;, &quot;10.0.1.245&quot;, &quot;6C:AE:8B:E3:27:00&quot;, &quot;bnt&quot;, &quot;G8000&quot;, &quot;private_leaf&quot;, &quot;secret&quot;, true  ],
+	  [ &quot;exmgmt-a5-b4-m&quot;, &quot;10.0.1.148&quot;, &quot;74:99:75:3f:7a:00&quot;, &quot;bnt&quot;, &quot;G8052&quot;, &quot;private_leaf&quot;, &quot;secret&quot;, true ],
+	  [ &quot;exmgmt-a5-d4-m&quot;, &quot;10.0.1.149&quot;, &quot;74:99:75:3f:8d:00&quot;, &quot;bnt&quot;, &quot;G8052&quot;, &quot;private_leaf&quot;, &quot;secret&quot;, true  ],
+	  [ &quot;exmgt-c2-u40-m&quot;, &quot;10.0.1.146&quot;, [&quot;78:FE:3D:E9:52:80&quot;,&quot;78:FE:3D:E9:52:81&quot;], &quot;juniper&quot;, &quot;ex3300-24t&quot;, &quot;private_leaf&quot;, &quot;secret&quot;, true  ],
+  
+	  //Department nodes in test rack.
+	  //These are on dev network, but are visible via private vlans on above switches.
+	  [ &quot;exmgt-o18-u42-m&quot;, &quot;10.0.1.144&quot;, &quot;50:C5:8D:A9:D9:40&quot;, &quot;juniper&quot;, &quot;ex3300-24t&quot;, &quot;private_leaf&quot;, &quot;secret&quot;, true  ]
+	  //[ &quot;exmgt-o15-u41&quot;, &quot;192.168.1.144&quot;, &quot;78:FE:3D:E9:5E:00&quot;, &quot;juniper&quot;, &quot;ex4300-24t&quot;, &quot;private_leaf&quot;, &quot;secret&quot;, false ], //connected to port 43 of exmgmt-a5-b4-m
+	  //[ &quot;tdc-o18-u46-m_dev_switch&quot;, &quot;192.168.1.145&quot;, &quot;78:FE:3D:E9:73:40&quot;, &quot;juniper&quot;, &quot;ex4300-24t&quot;, &quot;private_leaf&quot;, &quot;secret&quot;, false  ] //Connected to port 47 of the Pica8 
+  ]
+}</code></pre>
+</div></div>
+
+    <div id="footer">
+  Generated on Tue May 26 12:17:34 2015 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.2).
+</div>
+
+  </body>
+</html>

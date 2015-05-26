@@ -1,0 +1,745 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Gen_switch_graph
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!Gen_switch_graph.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (G)</a> &raquo;
+    
+    
+    <span class="title">Gen_switch_graph</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Gen_switch_graph
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">generators/gen_switch_graph.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Encapsulates methods to generate dot and HTML from the switch records.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gen_dot-class_method" title="gen_dot (class method)">+ (Object) <strong>gen_dot</strong>(switches, html_base_directory = &quot;/tmp/&quot;, web_directory = &#39;.&#39;, remove_the_dot_file = false) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generate a dot file from the Switch records, and from that, a png and map
+file for serving from the web server.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gen_html_table-class_method" title="gen_html_table (class method)">+ (Object) <strong>gen_html_table</strong>(switches, html_base_directory = &quot;/tmp/&quot;, web_directory = &#39;.&#39;) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generate a .html file, per switch, showing the port status and which nodes
+can be seen using this port.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gen_shtml-class_method" title="gen_shtml (class method)">+ (Object) <strong>gen_shtml</strong>(switches, html_base_directory = &quot;/tmp/&quot;, web_directory = &#39;.&#39;) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generate .shtml files for each switch, if they don&#39;t already exist.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="gen_dot-class_method">
+  
+    + (<tt>Object</tt>) <strong>gen_dot</strong>(switches, html_base_directory = &quot;/tmp/&quot;, web_directory = &#39;.&#39;, remove_the_dot_file = false) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate a dot file from the Switch records, and from that, a png and map
+file for serving from the web server.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>switches</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Hash of Switch records</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>html_base_directory</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&quot;/tmp/&quot;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Root directory of the System&#39;s web server.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>web_directory</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;.&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Directory within the web directory, that we want to store the png and map
+files</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>remove_the_dot_file</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>false</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Set to true for debugging dot grophing issues.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'generators/gen_switch_graph.rb', line 11</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_gen_dot'>gen_dot</span><span class='lparen'>(</span><span class='id identifier rubyid_switches'>switches</span><span class='comma'>,</span> <span class='id identifier rubyid_html_base_directory'>html_base_directory</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/tmp/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_web_directory'>web_directory</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_remove_the_dot_file'>remove_the_dot_file</span><span class='op'>=</span><span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_arp'>arp</span> <span class='op'>=</span> <span class='const'>Arp</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_switches'>switches</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_n'>n</span><span class='comma'>,</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span> <span class='comment'>#for each switch
+</span>    <span class='id identifier rubyid_safe_name'>safe_name</span> <span class='op'>=</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[- ]</span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>_</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_filename'>filename</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_html_base_directory'>html_base_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_safe_name'>safe_name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_filename'>filename</span><span class='embexpr_end'>}</span><span class='tstring_content'>.dot</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>w</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_fd'>fd</span><span class='op'>|</span>
+      <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_print'>print</span> <span class='heredoc_beg'>&lt;&lt;-EOF2</span>
+<span class='tstring_content'>graph </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_safe_name'>safe_name</span><span class='embexpr_end'>}</span><span class='tstring_content'> {
+graph [ fontname = &quot;Times&quot;, fontsize=12, dpi=72  ];
+overlap=scale;
+layout=neato
+node [shape=ellipse, fontname = &quot;Lucida&quot;, fontsize=12]; 
+  &quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_safe_name'>safe_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>&quot; [color=&quot;green&quot;, URL=\&quot;/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_safe_name'>safe_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>_t.html\&quot; ];
+node [shape=ellipse, color=black, fontname = &quot;Lucida&quot;, fontsize=12];    
+</span><span class='heredoc_end'>EOF2
+</span>
+      <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_ports'>ports</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_p'>p</span><span class='op'>|</span> <span class='comment'>#for each port on the switch
+</span>        <span class='kw'>if</span> <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_bridge_port'>bridge_port</span> <span class='op'>==</span> <span class='kw'>false</span>
+          <span class='comment'># create node entries 
+</span>          <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_port_arp'>port_arp</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='op'>|</span>  <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>  \&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_arp'>arp</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span><span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>\&quot; [ color=\&quot;green\&quot; ];</span><span class='tstring_end'>&quot;</span></span> <span class='rparen'>)</span> <span class='rbrace'>}</span> 
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+      <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
+
+      <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_ports'>ports</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_p'>p</span><span class='op'>|</span> <span class='comment'>#for each port on the switch
+</span>        <span class='kw'>if</span> <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_bridge_port'>bridge_port</span> <span class='op'>==</span> <span class='kw'>false</span>
+          <span class='comment'># create edge entries
+</span>          <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_port_arp'>port_arp</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='op'>|</span>  <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_safe_name'>safe_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\&quot; -- \&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_arp'>arp</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span><span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>\&quot; [headlabel=\&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_port_number'>port_number</span><span class='embexpr_end'>}</span><span class='tstring_content'>\&quot;, color=\&quot;green\&quot; , len=1.50 ];</span><span class='tstring_end'>&quot;</span></span> <span class='rparen'>)</span> <span class='rbrace'>}</span> 
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+      <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>}\n</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_system'>system</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/usr/bin/dot -Tpng -o </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_filename'>filename</span><span class='embexpr_end'>}</span><span class='tstring_content'>.png -Tcmapx -o </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_filename'>filename</span><span class='embexpr_end'>}</span><span class='tstring_content'>_map.html </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_filename'>filename</span><span class='embexpr_end'>}</span><span class='tstring_content'>.dot</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_unlink'>unlink</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_filename'>filename</span><span class='embexpr_end'>}</span><span class='tstring_content'>.dot</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_remove_the_dot_file'>remove_the_dot_file</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gen_html_table-class_method">
+  
+    + (<tt>Object</tt>) <strong>gen_html_table</strong>(switches, html_base_directory = &quot;/tmp/&quot;, web_directory = &#39;.&#39;) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate a .html file, per switch, showing the port status and which nodes
+can be seen using this port.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>switches</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Hash of Switch records</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>html_base_directory</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&quot;/tmp/&quot;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Root directory of the System&#39;s web server.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>web_directory</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;.&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Directory within the web directory, that we want to store the html files
+for each switch</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'generators/gen_switch_graph.rb', line 52</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_gen_html_table'>gen_html_table</span><span class='lparen'>(</span><span class='id identifier rubyid_switches'>switches</span><span class='comma'>,</span> <span class='id identifier rubyid_html_base_directory'>html_base_directory</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/tmp/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_web_directory'>web_directory</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_arp'>arp</span> <span class='op'>=</span> <span class='const'>Arp</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_switches'>switches</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_n'>n</span><span class='comma'>,</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span> <span class='comment'>#for each switch
+</span>    <span class='id identifier rubyid_safe_name'>safe_name</span> <span class='op'>=</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[- ]</span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>_</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_filename'>filename</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_html_base_directory'>html_base_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_safe_name'>safe_name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_filename'>filename</span><span class='embexpr_end'>}</span><span class='tstring_content'>_t.html</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>w</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_fd'>fd</span><span class='op'>|</span>
+      <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='heredoc_beg'>&lt;&lt;-EOF</span>
+<span class='tstring_content'>      &lt;html&gt;
+      &lt;head&gt;
+      &lt;title&gt;Switch </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>&lt;/title&gt;
+      &lt;META HTTP-EQUIV=&quot;Refresh&quot; CONTENT=&quot;30;URL=/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_safe_name'>safe_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>_t.html&quot;&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+      &lt;h2&gt;&lt;a href=&quot;/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_safe_name'>safe_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>.dot&quot;&gt;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>&lt;/a&gt;&lt;/h2&gt;
+      &lt;table border=&quot;1&quot;&gt;
+</span><span class='heredoc_end'>      EOF
+</span>
+      <span class='id identifier rubyid_ports'>ports</span> <span class='op'>=</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_ports'>ports</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span> <span class='comment'>#Change from a hash to an array, so we can use numeric indexes.
+</span>      <span class='lparen'>(</span><span class='int'>0</span><span class='op'>...</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_ports'>ports</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='op'>+</span><span class='int'>23</span><span class='rparen'>)</span><span class='op'>/</span><span class='int'>24</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_l24'>l24</span><span class='op'>|</span> <span class='comment'>#lots of 24. (1..11) then (2..12), then (13..23) and (14..24)
+</span>        <span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='int'>1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span> <span class='comment'>#two rows 
+</span>          <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+          <span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='int'>1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_l12'>l12</span><span class='op'>|</span> <span class='comment'>#left lot of 12 , then right lot of 12
+</span>            <span class='id identifier rubyid_base'>base</span> <span class='op'>=</span> <span class='id identifier rubyid_l24'>l24</span><span class='op'>*</span><span class='int'>24</span> <span class='op'>+</span> <span class='id identifier rubyid_l12'>l12</span><span class='op'>*</span><span class='int'>12</span> <span class='op'>+</span> <span class='id identifier rubyid_r'>r</span>  <span class='comment'>#Groups of 24, in pairs of 12 
+</span>            <span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='op'>...</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='op'>+</span><span class='int'>12</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_step'>step</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> 
+              <span class='kw'>if</span><span class='lparen'>(</span><span class='id identifier rubyid_ports'>ports</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+                <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;th width=\&quot;4%\&quot; </span><span class='embexpr_beg'>#{</span> <span class='id identifier rubyid_ports'>ports</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_up'>up</span> <span class='op'>==</span> <span class='kw'>true</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bgcolor=&quot;#00FF00&quot;</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='embexpr_end'>}</span><span class='tstring_content'>&gt;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_ports'>ports</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_port_name'>port_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>&lt;/th&gt;</span><span class='tstring_end'>&quot;</span></span>
+              <span class='kw'>else</span> <span class='comment'>#Blank cell requires &amp;nbsp; to render correctly
+</span>                <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;th&gt;&amp;nbsp;&lt;/th&gt;</span><span class='tstring_end'>&quot;</span></span>
+              <span class='kw'>end</span>
+            <span class='kw'>end</span>
+            <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;th width=\&quot;1%\&quot;&gt;&amp;nbsp;&lt;/th&gt;</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_l12'>l12</span> <span class='op'>==</span> <span class='int'>0</span>
+          <span class='kw'>end</span>
+          <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/tr&gt;\n&lt;tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+          
+          <span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='int'>1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_l12'>l12</span><span class='op'>|</span> <span class='comment'>#left lot of 12 , then right lot of 12
+</span>            <span class='id identifier rubyid_base'>base</span> <span class='op'>=</span> <span class='id identifier rubyid_l24'>l24</span><span class='op'>*</span><span class='int'>24</span> <span class='op'>+</span> <span class='id identifier rubyid_l12'>l12</span><span class='op'>*</span><span class='int'>12</span> <span class='op'>+</span> <span class='id identifier rubyid_r'>r</span>  <span class='comment'>#Groups of 24, in pairs of 12 
+</span>            <span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='op'>...</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='op'>+</span><span class='int'>12</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_step'>step</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
+              <span class='kw'>if</span> <span class='id identifier rubyid_ports'>ports</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='kw'>nil</span>
+                <span class='kw'>if</span> <span class='id identifier rubyid_ports'>ports</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_bridge_port'>bridge_port</span>
+                  <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;td&gt;Switch&lt;br&gt;&lt;a href=\&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_ports'>ports</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_remote_switch_name'>remote_switch_name</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[- ]</span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>_</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>_t.html\&quot;&gt;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_ports'>ports</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_remote_switch_name'>remote_switch_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_ports'>ports</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_remote_port_name'>remote_port_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>&lt;/a&gt;&lt;/td&gt;</span><span class='tstring_end'>&quot;</span></span>
+                <span class='kw'>elsif</span> <span class='id identifier rubyid_ports'>ports</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_port_arp'>port_arp</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+                  <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;td&gt;</span><span class='tstring_end'>&quot;</span></span>
+                  <span class='id identifier rubyid_ports'>ports</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_port_arp'>port_arp</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_mac'>mac</span><span class='op'>|</span>
+                    <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_arp'>arp</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span><span class='lparen'>(</span><span class='id identifier rubyid_mac'>mac</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>&lt;br&gt;</span><span class='tstring_end'>&quot;</span></span>
+                  <span class='kw'>end</span>
+                  <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/td&gt;</span><span class='tstring_end'>&quot;</span></span>
+                <span class='kw'>else</span> <span class='comment'>#Blank cell requires &amp;nbsp; to render correctly
+</span>                  <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;td&gt;&amp;nbsp;&lt;/td&gt;</span><span class='tstring_end'>&quot;</span></span>
+                <span class='kw'>end</span>
+              <span class='kw'>else</span> <span class='comment'>#Blank cell requires &amp;nbsp; to render correctly
+</span>                <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;td&gt;&amp;nbsp;&lt;/td&gt;</span><span class='tstring_end'>&quot;</span></span>
+              <span class='kw'>end</span>
+            <span class='kw'>end</span>
+            <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;td&gt;&amp;nbsp;&lt;/td&gt;</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_l12'>l12</span> <span class='op'>==</span> <span class='int'>0</span>
+          <span class='kw'>end</span>
+          <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+        <span class='kw'>end</span>
+        <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;tr&gt;&lt;td colspan=\&quot;25\&quot;&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span>  
+      <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/table&gt;\n&lt;/body&gt;\n&lt;/html&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gen_shtml-class_method">
+  
+    + (<tt>Object</tt>) <strong>gen_shtml</strong>(switches, html_base_directory = &quot;/tmp/&quot;, web_directory = &#39;.&#39;) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate .shtml files for each switch, if they don&#39;t already exist.</p>
+
+<pre class="code ruby"><code class="ruby">Assumes the directories already exist.</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>switches</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Hash of Switch records</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>html_base_directory</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&quot;/tmp/&quot;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Root directory of the System&#39;s web server.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>web_directory</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;.&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Directory within the web directory, that we want to store the .shtml files
+for each switch</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'generators/gen_switch_graph.rb', line 121</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_gen_shtml'>gen_shtml</span><span class='lparen'>(</span><span class='id identifier rubyid_switches'>switches</span><span class='comma'>,</span> <span class='id identifier rubyid_html_base_directory'>html_base_directory</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/tmp/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_web_directory'>web_directory</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_switches'>switches</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span>
+    <span class='id identifier rubyid_safe_name'>safe_name</span> <span class='op'>=</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[- ]</span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>_</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_filename'>filename</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_html_base_directory'>html_base_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_safe_name'>safe_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>.html</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='kw'>false</span>
+      <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>w</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>0755</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_fd'>fd</span><span class='op'>|</span>
+        <span class='id identifier rubyid_fd'>fd</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='heredoc_beg'>&lt;&lt;-EOF</span>
+<span class='tstring_content'>&lt;html&gt;&lt;head&gt;
+&lt;title&gt;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_safe_name'>safe_name</span><span class='embexpr_end'>}</span><span class='tstring_content'> Switch&lt;/title&gt;
+&lt;META HTTP-EQUIV=&quot;Refresh&quot; CONTENT=&quot;30;URL=/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_safe_name'>safe_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>.html&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!--#include virtual=&quot;/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_safe_name'>safe_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>_map.html&quot; --&gt;
+&lt;img src=&quot;/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_web_directory'>web_directory</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_safe_name'>safe_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>.png&quot; BORDER=0 usemap=&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_safe_name'>safe_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>&quot; &gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</span><span class='heredoc_end'>EOF
+</span>      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue May 26 12:17:34 2015 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.2).
+</div>
+
+  </body>
+</html>
