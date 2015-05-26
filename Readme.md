@@ -77,3 +77,13 @@ Need to record the expected state, and compare against it, so I can highlight ch
   ]
 }
 ```
+
+##External Requirements
+
+Runs under Ruby (at least 1.9)
+Needs gem snmp to run
+  `gem install snmp`
+
+Need gem yard to generate class documentation from the source comments.
+  `gem install yard`
+
