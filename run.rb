@@ -16,8 +16,9 @@ def self_test(switches)
 end
 
 @config = Configuration.new
-@auth = Configuration.new('conf/auth.json')
-@switches_we_are_interested_in = Configuration.new(@config.switch_config)
+#@auth = Configuration.new((@config.auth[0] == '/') ? @config.auth : File.expand_path(File.dirname(__FILE__)) + @config.auth)
+@switches_we_are_interested_in = Configuration.new((@config.switch_config[0] == '/') ? @config.switch_config : File.expand_path(File.dirname(__FILE__)) + @config.switch_config)
+
 begin
   Dir.chdir(@config.base_directory) #Where we will create temporary files.
 
