@@ -1,6 +1,7 @@
 #Switch Topology
 
-`switchtopology/run.rb`
+`pan_ip_switchtopology/run.rb` for the automated generation of diagrams and html tables for the web site
+`pan_ip_switchtopology/cli_run.rb` to get tab separated output on STDOUT
 
 Using the switches defined in *conf/switches.json*, snmp queries are run:
 * snmp bridge mib queries determine switches links verses host links.
