@@ -1,8 +1,11 @@
 #!/usr/local/bin/ruby
 require 'pp'
-require_relative 'generators/gen_tsv.rb'
+require_relative 'generators/gen_neato_topology.rb'
+require_relative 'generators/gen_dot_topology.rb'
+require_relative 'generators/gen_switch_graph.rb'
 require_relative 'rlib/switch.rb'
 require_relative 'rlib/configuration.rb'
+require_relative 'rlib/upload.rb'
 
 #Debugging check to see if we loaded the switches correctly
 # @param switches [Switch] The switches we loaded from the conf file, and just did SNMP queries on
@@ -14,7 +17,7 @@ def self_test(switches)
 end
 
 @config = Configuration.new
-#@auth = Configuration.new((@config.auth[0] == '/') ? @config.auth : File.expand_path(File.dirname(__FILE__)) + @config.auth)
+@auth = Configuration.new((@config.auth[0] == '/') ? @config.auth : File.expand_path(File.dirname(__FILE__)) + '/' + @config.auth)
 @switches_we_are_interested_in = Configuration.new((@config.switch_config[0] == '/') ? @config.switch_config : File.expand_path(File.dirname(__FILE__)) + "/" + @config.switch_config)
 
 begin
@@ -37,7 +40,25 @@ begin
   @switches['bnt-a2-002-m'].ports['21'].remote_switch_name = 'ITS_TMK_BR'; @switches['bnt-a2-002-m'].ports['21'].bridge_port = true;
 
   #self_test(@switches)
-  TSV::gen(@switches)
+  
+  #Generates a neato diagram for the switches we found.
+  Neato.gen_neato(@switches, @config.html_directory, @config.html_network_directory, @config.neato_base_filename, @config.neato_remove_tmp_files) 
+  #Gen_switch_graph.gen_dot(@switches, @config.dot_filename)
+  
+  Gen_switch_graph.gen_shtml(@switches, @config.html_directory, @config.html_network_directory) #Generate the shtml files that link the neato .png and map files together (if they don't exist).
+  Gen_switch_graph.gen_html_table(@switches, @config.html_directory, @config.html_network_directory) #Generates HTML tables, with the switch ports as cells, and coloured to indicate the state.
+
+  Dir.open("#{@config.html_directory}/#{@config.html_network_directory}").each do |filename|
+    begin
+      if filename =~ /^[a-zA-Z].+$/
+        Upload::upload_file("#{@config.html_directory}/#{@config.html_network_directory}/#{filename}", 
+                            "#{@config.remote_html_directory}/#{@config.remote_html_network_directory}/#{filename}", 
+                             @config.remote_www_server, @auth.transfer_ssh_keyfile)
+      end
+    rescue Exception => error
+      puts "error #{error}"
+    end
+  end
   
 rescue Exception=>error #catch every type of error.
   puts error
